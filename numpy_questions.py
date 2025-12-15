@@ -16,6 +16,7 @@ This will be enforced with `flake8`. You can check that there is no flake8
 errors by calling `flake8` at the root of the repo.
 """
 import numpy as np
+import test_numpy_questions as test
 
 
 def max_index(X):
@@ -40,7 +41,17 @@ def max_index(X):
     i = 0
     j = 0
 
-    # TODO
+    if not isinstance(X, np.ndarray):
+        raise ValueError("Input must be a numpy array.")
+    if X.ndim != 2:
+        raise ValueError("Input array must be 2D.")
+    
+    max_value = float('-inf')
+    for row_idx, row in enumerate(X):
+        for col_idx, value in enumerate(row):
+            if value > max_value:
+                max_value = value
+                i, j = row_idx, col_idx
 
     return i, j
 
@@ -64,4 +75,17 @@ def wallis_product(n_terms):
     """
     # XXX : The n_terms is an int that corresponds to the number of
     # terms in the product. For example 10000.
-    return 0.
+    pi_approx = 2.0
+    product = 1.0
+    for n in range(1, n_terms + 1):
+        numerator = 4 * n * n
+        denominator = numerator - 1
+        product *= numerator / denominator
+    pi_approx = product * 2
+    return pi_approx
+
+if __name__ == "__main__":
+    test.test_max_index()
+    print("true max_index passed")
+    test.test_wallis_product()
+    print("true wallis_product passed")
