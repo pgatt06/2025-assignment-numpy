@@ -15,8 +15,8 @@ We also ask to respect the pep8 convention: https://pep8.org.
 This will be enforced with `flake8`. You can check that there is no flake8
 errors by calling `flake8` at the root of the repo.
 """
+
 import numpy as np
-import test_numpy_questions as test
 
 
 def max_index(X):
@@ -45,7 +45,7 @@ def max_index(X):
         raise ValueError("Input must be a numpy array.")
     if X.ndim != 2:
         raise ValueError("Input array must be 2D.")
-    max_value = float('-inf')
+    max_value = float("-inf")
     for row_idx, row in enumerate(X):
         for col_idx, value in enumerate(row):
             if value > max_value:
