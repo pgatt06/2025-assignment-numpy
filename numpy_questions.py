@@ -82,11 +82,3 @@ def wallis_product(n_terms):
         product *= numerator / denominator
     pi_approx = product * 2
     return pi_approx
-
-
-if __name__ == "__main__":
-
-    test.test_max_index()
-    print("true max_index passed")
-    test.test_wallis_product()
-    print("true wallis_product passed")
